@@ -5,7 +5,7 @@
  */
 char *readline(void)
 {
-int buf_s, buf_s2, count, c;
+int buf_s, buf_s2, count, gc;
 char *buffer;
 
 /** sets vars values and allocates memory */
@@ -21,14 +21,14 @@ exit(EXIT_FAILURE);
 /** reat line using while to go thru it and get chars, also returns the line and count counts the chars*/
 while (1)
     {
-      c = getchar();
-      if (c == EOF || c == '\n')
+      gc = getchar();
+      if (gc == EOF || gc == '\n')
 	{
 	  buffer[count] = '\0';
 	  return (buffer);
 	}
       else
-	buffer[count] = c;
+	buffer[count] = gc;
       count++;
       if (count >= buf_s)
 	{
