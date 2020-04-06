@@ -25,8 +25,7 @@ int execute(char **args);
 int run(char **args);
 int __exit(void);
 int help(void);
+void *realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int cd(char **args);
-
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 #endif
