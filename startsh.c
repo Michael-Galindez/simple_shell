@@ -20,6 +20,7 @@ int main(int argc, char **argv)
 		args = separate(l);
 		/** Execute the commands given by the user */
 		checker = execute(args);
+		free(args);
 	} while (checker);
 	return (0);
 }
