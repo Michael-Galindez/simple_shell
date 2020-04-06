@@ -48,3 +48,12 @@ Your shell will be compiled this way:
 
 **gcc -Wall -Werror -Wextra -pedantic *.c -o hsh**
 ___
+**Learning Objectives**
+
+At the end of this project, you are expected to be able to explain to anyone, without the help of Google.
+___
+**More Info**
+See the Man_1_simple_shell man page to get info about syntax, sipnosis, etc.
+___
+**Credits**
+Shell made by Juan Camilo Acevedo <@acamilojuan> & Michael Galindez <@Michael-Galindez> For **Holberton School**
