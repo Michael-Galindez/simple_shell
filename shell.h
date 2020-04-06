@@ -14,8 +14,8 @@
  */
 typedef struct command_t
 {
-  char *name;
-  int (*s)();
+char *name;
+int (*s)();
 
 } command_t;
 
