@@ -42,3 +42,9 @@ Unless specified otherwise, your program must have the exact same output as sh (
 
 The only difference is when you print an error, the name of the program must be equivalent to your argv[0]
 ___
+**Compilation**
+
+Your shell will be compiled this way:
+
+**gcc -Wall -Werror -Wextra -pedantic *.c -o hsh**
+___
