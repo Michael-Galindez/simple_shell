@@ -21,6 +21,7 @@ int main(int argc, char **argv)
 		/** Execute the commands given by the user */
 		checker = execute(args);
 		free(args);
+		free(l);
 	} while (checker);
 	return (0);
 }
