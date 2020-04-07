@@ -13,7 +13,7 @@ char **separate(char *l)
 
 	buf_s = 64;
 	count = 0;
-	tokens = malloc(buf_s * (sizeof(char *)));
+	tokens = malloc(buf_s * sizeof(char *));
 	/** if tokens failed to allocate */
 	if (!tokens)
 	{
@@ -29,15 +29,16 @@ char **separate(char *l)
 		if (count >= buf_s)
 		{
 			buf_s2 = buf_s + 64;
+
 			buf_s = buf_s2;
+			if (!tokens)
+			{
+				fprintf(stderr, ">$: allocation error\n");
+				exit(EXIT_FAILURE);
+			}
 		}
-		if (!tokens)
-		{
-			fprintf(stderr, ">$: allocation error\n");
-			exit(EXIT_FAILURE);
-		}
-	}
 	token = strtok(NULL, DELIMETER);
+	}
 	tokens[count] = NULL;
 	return (tokens);
 }
