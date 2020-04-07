@@ -8,36 +8,36 @@
  */
 char **separate(char *l)
 {
-int buf_s, buf_s2, count;
-char **tokens, *token;
+	int buf_s, buf_s2, count;
+	char **tokens, *token;
 
-buf_s = 64;
-count = 0;
-tokens = malloc(buf_s *sizeof(char *));
-/** if tokens failed to allocate */
-if (!tokens)
-{
-fprintf(stderr, ">$: allocation error at pasel\n");
-exit(EXIT_FAILURE);
-}
-/** checks token with DELIMETER user counter to measure position */
-token = strtok(l, DELIMETER);
-while (token != NULL)
-{
-tokens[count] = token;
-count++;
-if (count >= buf_s)
-{
-buf_s2 = buf_s + 64;
-buf_s = buf_s2;
-if (!tokens)
-{
-fprintf(stderr, ">$: allocation error\n");
-exit(EXIT_FAILURE);
-}
-}
-token = strtok(NULL, DELIMETER);
-}
-tokens[count] = NULL;
-return (tokens);
+	buf_s = 64;
+	count = 0;
+	tokens = malloc(buf_s * (sizeof(char *)));
+	/** if tokens failed to allocate */
+	if (!tokens)
+	{
+		fprintf(stderr, ">$: allocation error at pasel\n");
+		exit(EXIT_FAILURE);
+	}
+	/** checks token with DELIMETER user counter to measure position */
+	token = strtok(l, DELIMETER);
+	while (token != NULL)
+	{
+		tokens[count] = token;
+		count++;
+		if (count >= buf_s)
+		{
+			buf_s2 = buf_s + 64;
+			buf_s = buf_s2;
+		}
+		if (!tokens)
+		{
+			fprintf(stderr, ">$: allocation error\n");
+			exit(EXIT_FAILURE);
+		}
+	}
+	token = strtok(NULL, DELIMETER);
+	tokens[count] = NULL;
+	return (tokens);
 }
