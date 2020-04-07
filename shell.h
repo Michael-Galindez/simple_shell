@@ -1,5 +1,6 @@
 #ifndef SHELL_H
 #define SHELL_H
+#define N_COMMANDS(x, y) (sizeof(x) / sizeof(y))
 
 #include <stdio.h>
 #include <stdlib.h>
