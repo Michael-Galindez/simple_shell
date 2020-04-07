@@ -1,43 +1,43 @@
 #include "shell.h"
-#define DELIMETER " "
+#define DELIMETER " \t\r\n\a"
+
 /**
- * separate - Function to separate tokens.
- * @l: Chars that commes in.
- * Return: Tokens' values.
+ * separate - takes the line and parses it to separate commands args.
+ * @l: sentence to be parsed.
+ * Return: returns the array with args and segments.
  */
 char **separate(char *l)
 {
-	int buf_s = 64, buf_s2, count = 0;
-	char **tokens, *token;
+  int buf_s, buf_s2, count;
+  char **tokens, *token;
 
-	tokens = malloc(buf_s * sizeof(char *));
-	/** if tokens failed to allocate */
-	if (!tokens)
+  buf_s = 64;
+  count = 0;
+  tokens = malloc(buf_s * sizeof(char *));
+  /** if tokens failed to allocate */
+  if (!tokens)
+    {
+      fprintf(stderr, ">$: allocation error at pasel\n");
+      exit(EXIT_FAILURE);
+    }
+  /** checks token with DELIMETER user counter to measure position */
+  token = strtok(l, DELIMETER);
+  while (token != NULL)
+    {
+      tokens[count] = token;
+      count++;
+      if (count >= buf_s)
 	{
-		fprintf(stderr, ">$: allocation error at parsel\n");
-		exit(EXIT_FAILURE);
+	  buf_s2 = buf_s + 64;	  
+	  buf_s = buf_s2;
+	  if (!tokens)
+	    {
+	      fprintf(stderr, ">$: allocation error\n");
+	      exit(EXIT_FAILURE);
+	    }
 	}
-	/** checks token with DELIMETER user counter to measure position */
-	token = strtok(l, DELIMETER);
-	while (token != NULL)
-	{
-		tokens[count] = token;
-		count++;
-		if (count >= buf_s)
-		{
-			buf_s2 = buf_s + 64;
-
-			buf_s = buf_s2;
-		}
-		if (!tokens)
-		{
-			fprintf(stderr, ">$: allocation error\n");
-			exit(EXIT_FAILURE);
-		}
-	}
-	token = strtok(NULL, DELIMETER);
+      token = strtok(NULL, DELIMETER);
 }
-		tokens[count] = NULL;
-		return (tokens);
-
+tokens[count] = NULL;
+return (tokens);
 }
