@@ -7,7 +7,7 @@ ___
 ![loop](https://user-images.githubusercontent.com/60362631/78463494-f37c2380-76a2-11ea-8a9c-2faa25a5b0b6.gif)
 ___
  **General**
- 
+
 Who designed and implemented the original Unix operating system
 
 Who wrote the first version of the UNIX shell

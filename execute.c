@@ -12,7 +12,7 @@ int execute(char **args)
 	{"exit", __exit},
 	{"help", help},
 	{"cd", cd}
-	}
+	};
 	/** if no args given */
 	if (args[0] == NULL)
 		return (1);

@@ -1,4 +1,4 @@
-#include "shell.c"
+#include "shell.h"
 #define DELIMETER " "
 /**
  * separate - Function to separate tokens.
@@ -26,6 +26,7 @@ char **separate(char *l)
 		if (count >= buf_s)
 		{
 			buf_s2 = buf_s + 64;
+
 			buf_s = buf_s2;
 		}
 		if (!tokens)
@@ -35,8 +36,8 @@ char **separate(char *l)
 		}
 	}
 	token = strtok(NULL, DELIMETER);
-	{
+}
 		tokens[count] = NULL;
 		return (tokens);
-	}
+
 }

@@ -1,15 +1,15 @@
-#include "holberton.h"
+#include "shell.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 /**
- * *realloc - reallocate memory
+ * *_realloc - reallocate memory
  * @ptr: pointer to address
  * @old_size: unsigned old memory size
  * @new_size: unsigned new memory size
  * Return:  return pointer
  */
-void *realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 char *s;
 
