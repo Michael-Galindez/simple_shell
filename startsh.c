@@ -7,9 +7,9 @@
  */
 int main(int argc, char **argv)
 {
-	(void) argc, (void) argv;
 	char *l, **args;
 	int checker;
+	(void) argc, (void) argv;
 
 	do {
 		/** Prints Prompt To User */
