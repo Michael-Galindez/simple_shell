@@ -3,7 +3,7 @@
  * main - function thattakes commands from the user, stdin.
  * @argc: Arguments to use.
  * @argv: Double pointer to the array of arguments.
- * Return: Always zero.
+ * Return: Always 0.
  */
 int main(int argc, char **argv)
 {
