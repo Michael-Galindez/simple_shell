@@ -6,6 +6,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <signal.h>
+#include <sys/stat.h>
 /**
  * struct command_t - pointers to builtins.
  * @name: name of the command.
@@ -26,5 +28,4 @@ int __exit(void);
 int help(void);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int cd(char **args);
-
 #endif
