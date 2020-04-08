@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * sig_handler - Function to handle the signal
- * @uuv: unused input variable.
+ * @uuv: unused input variable
  */
 static void sig_handler(int uuv)
 {
