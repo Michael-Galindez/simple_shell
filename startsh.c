@@ -1,8 +1,9 @@
 #include "shell.h"
 /**
  * sig_handler - Function to handle the signal
+ * @uuv: unused input variable.
  */
-static void sig_handler(void)
+static void sig_handler(int uuv)
 {
 	unsigned int sig_flag = 0;
 	(void) uuv;
