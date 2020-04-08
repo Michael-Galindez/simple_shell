@@ -1,15 +1,18 @@
 #include "shell.h"
+/**
+ * sig_handler - Function to handle the signal
+ * @uuv: unused input variable
+ */
 static void sig_handler(int uuv)
 {
-unsigned int sig_flag = 0;
-(void) uuv;
+	unsigned int sig_flag = 0;
+	(void) uuv;
 
-if (sig_flag == 0)
-puts("\nSH>$ ");
-else
-puts("\n");
+	if (sig_flag == 0)
+		puts("\nSH>$ ");
+	else
+		puts("\n");
 }
-
 /**
  * main - function thattakes commands from the user, stdin.
  * @argc: Arguments to use.
