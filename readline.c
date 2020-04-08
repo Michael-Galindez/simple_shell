@@ -32,7 +32,7 @@ char *readline(void)
 		if (count >= buf_s)
 		{
 			buf_s2 = buf_s + 1024;
-			/** buffer = realloc(buffer, buf_s, buf_s2); */
+			buffer = _realloc(buffer, buf_s, buf_s2);
 			buf_s = buf_s2;
 			/** if fails to allocate error msg in standard error */
 			if (!buffer)
