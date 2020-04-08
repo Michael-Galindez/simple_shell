@@ -12,6 +12,7 @@ static void sig_handler(int uuv)
 		puts("\nSH>$ ");
 	else
 		puts("\n");
+
 }
 /**
  * main - function thattakes commands from the user, stdin.

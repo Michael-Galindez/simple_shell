@@ -29,7 +29,7 @@ char **separate(char *l)
 		if (count >= buf_s)
 		{
 			buf_s2 = buf_s + 64;
-
+			tokens = _realloc(tokens, buf_s, buf_s2);
 			buf_s = buf_s2;
 			if (!tokens)
 			{
