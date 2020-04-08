@@ -22,7 +22,7 @@ int cd(char **args)
 	{
 		if (chdir(args[1]) == 0)
 		{
-			if (getcwd(buf,4000) == NULL)
+			if (getcwd(buf, 4000) == NULL)
 				perror("unable to print dir");
 			else
 				printf("%s\n", buf);
@@ -34,6 +34,7 @@ int cd(char **args)
 }
 /**
  * help - Function to look for help info
+ * Return: always 1.
  */
 int help(void)
 {
