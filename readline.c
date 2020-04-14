@@ -21,7 +21,7 @@ char *readline(void)
 	while (1)
 	{
 		gc = getchar();
-		if (gc == EOF || gc == '\n')
+		if (gc == '\n')
 		{
 			buffer[count] = '\0';
 			return (buffer);
