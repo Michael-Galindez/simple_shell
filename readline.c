@@ -11,14 +11,12 @@ char *readline(void)
 	/** sets vars values and allocates memory */
 	buf_s = 1024;
 	count = 0;
-	buffer = malloc(buf_s * sizeof(char *));
-	/** if buffer fails (dont exist || = NULL) "error" */
+	buffer = malloc(buf_s * sizeof(char *)); /** if buffer fails "error" */
 	if (!buffer)
 	{
 		exit(EXIT_FAILURE);
 	}
-	/** read line looping to get the chars. Returns the line and counts chars*/
-	while (1)
+	while (1) /** read line loop to get the chars. Returns the line n counts chs*/
 	{
 		gc = getchar();
 		if (gc == '\n')
@@ -26,10 +24,10 @@ char *readline(void)
 			buffer[count] = '\0';
 			return (buffer);
 		}
-		else if(gc == EOF)
-		  {
-		    return(NULL);
-		  }
+		else if (gc == EOF)
+		{
+			return (NULL);
+		}
 		else
 			buffer[count] = gc;
 		count++;
