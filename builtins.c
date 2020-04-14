@@ -17,7 +17,7 @@ int cd(char **args)
 	char buf[4000];
 	/** if args */
 	if (args[1] == NULL)
-		fprintf(stderr, "SH>$: Expected arg to \"cd\"\n");
+	perror("SH>$: Expected arg to \"cd\"\n");
 	else
 	{
 		if (chdir(args[1]) == 0)
@@ -25,7 +25,8 @@ int cd(char **args)
 			if (getcwd(buf, 4000) == NULL)
 				perror("unable to print dir");
 			else
-				printf("%s\n", buf);
+				_puts(buf);
+			_puts("\n");
 		}
 		else
 			perror("error on cd");
@@ -46,11 +47,12 @@ int help(void)
 };
 	/** prints avalible commands */
 	n = N_COMMANDS(commands, commands[0]);
-	printf("Available commands are:\n");
+	_puts("Available commands are:\n");
 	count = 0;
 	while (count < n)
 	{
-		printf("%s\n", commands[count].name);
+		_puts(commands[count].name);
+		_puts("\n");
 		count++;
 	}
 	return (1);

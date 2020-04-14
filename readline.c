@@ -39,7 +39,7 @@ char *readline(void)
 			/** if fails to allocate error msg in standard error */
 			if (!buffer)
 			{
-				fprintf(stderr, ">$: allocation error\n");
+				perror(">$: allocation error\n");
 				exit(EXIT_FAILURE);
 			}
 		}

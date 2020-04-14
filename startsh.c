@@ -9,9 +9,9 @@ static void sig_handler(int uuv)
 	(void) uuv;
 
 	if (sig_flag == 0)
-		puts("\n$ ");
+		_puts("\n$ ");
 	else
-		puts("\n");
+		_puts("\n");
 
 }
 /**
@@ -30,7 +30,7 @@ int main(void)
 		do {
 
 		/** Prints Prompt To User */
-		printf("$ ");
+		_puts("$ ");
 		/** reads the line */
 		l = readline();
 		/** Separates the line to take and delims commands */
