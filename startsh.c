@@ -9,7 +9,7 @@ static void sig_handler(int uuv)
 	(void) uuv;
 
 	if (sig_flag == 0)
-		puts("\nSH>$ ");
+		puts("\n$ ");
 	else
 		puts("\n");
 
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 	do {
 
 		/** Prints Prompt To User */
-		printf("SH>$ ");
+		printf("$ ");
 		signal(SIGINT, sig_handler);
 		/** reads the line */
 		l = readline();
