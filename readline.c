@@ -26,6 +26,10 @@ char *readline(void)
 			buffer[count] = '\0';
 			return (buffer);
 		}
+		else if(gc == EOF)
+		  {
+		    return(NULL);
+		  }
 		else
 			buffer[count] = gc;
 		count++;

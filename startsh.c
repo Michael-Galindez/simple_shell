@@ -20,17 +20,17 @@ static void sig_handler(int uuv)
  * @argv: Double pointer to the array of arguments.
  * Return: Always 0.
  */
-int main(int argc, char **argv)
+int main(void)
 {
 	char *l, **args;
 	int checker;
-	(void) argc, (void) argv;
-
+	signal(SIGINT, sig_handler);
+	if (isatty(STDIN_FILENO) != 0)
+	  {
 	do {
 
 		/** Prints Prompt To User */
 		printf("$ ");
-		signal(SIGINT, sig_handler);
 		/** reads the line */
 		l = readline();
 		/** Separates the line to take and delims commands */
@@ -41,5 +41,35 @@ int main(int argc, char **argv)
 		free(args);
 		free(l);
 	} while (checker);
+	  }else
+	  {
+	    main2();
+	  }
 	return (0);
+}
+int main2(void)
+
+{
+  char *l, **args;
+
+  do {
+
+    signal(SIGINT, sig_handler);
+    /** reads the line */
+    l = readline();
+    if (l == NULL)
+      {
+	free(args);
+	free(l);
+	break;
+      }
+    /** Separates the line to take and delims commands */
+    args = separate(l);
+    /** Execute the commands given by the user */
+    execute(args);
+
+    free(args);
+    free(l);
+  } while (1);
+  return (0);
 }
