@@ -1,59 +1,27 @@
 #include "shell.h"
 /**
- * __exit - Function to exit
- * Return: Always 0.
+ *built_in - built-in command for shell.
+ *@tokenize: value tokenized the buffer in startsh file.
+ *@env: array of string to environ values.
+ *@buff: buffer input from main.
+ *@status: value of the exit.
  */
-int __exit(void)
+void builtin(char **tokenize, char **env, char **buff, int status)
 {
-	return (0);
+int i;
+(void)buff;
+
+if (_strcmp(tokenize[0], "exit") == 0)
+{
+for (i = 0; tokenize[i]; i++)
+free(tokenize[i]);
+free(*buff);
+free(tokenize);
+exit(status);
 }
-/**
- * cd - Function to change directory.
- * @args: Double pointer to the arguments.
- * Return: Always 1.
- */
-int cd(char **args)
+if (_strcmp(tokenize[0], "env") == 0)
 {
-	char buf[4000];
-	/** if args */
-	if (args[1] == NULL)
-	perror("SH>$: Expected arg to \"cd\"\n");
-	else
-	{
-		if (chdir(args[1]) == 0)
-		{
-			if (getcwd(buf, 4000) == NULL)
-				perror("unable to print dir");
-			else
-				_puts(buf);
-			_puts("\n");
-		}
-		else
-			perror("error on cd");
-	}
-	return (1);
+if (!tokenize[1])
+env_builtin(env);
 }
-/**
- * help - Function to look for help info
- * Return: always 1.
- */
-int help(void)
-{
-	int count, n;
-	command_t commands[] = {
-	{"exit", __exit},
-	{"cd", cd},
-	{"help", help}
-};
-	/** prints avalible commands */
-	n = N_COMMANDS(commands, commands[0]);
-	_puts("Available commands are:\n");
-	count = 0;
-	while (count < n)
-	{
-		_puts(commands[count].name);
-		_puts("\n");
-		count++;
-	}
-	return (1);
 }

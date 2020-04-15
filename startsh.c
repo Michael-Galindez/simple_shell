@@ -1,76 +1,105 @@
 #include "shell.h"
 /**
- * sig_handler - Function to handle the signal
- * @uuv: unused input variable
+ * env_builtin - enviroment built-in.
+ * @env: the array of string of environment values.
  */
-static void sig_handler(int uuv)
+void env_builtin(char **env)
 {
-	unsigned int sig_flag = 0;
-	(void) uuv;
+int i;
 
-	if (sig_flag == 0)
-		_puts("\n$ ");
-	else
-		_puts("\n");
-
+if (env)
+{
+for (i = 0; env[i]; i++)
+{
+_puts(env[i]);
+_putchar('\n');
+}
+}
 }
 /**
- * main - function thattakes commands from the user, stdin.
+ * main - run simple shelll finally.
+ * @ac: argument count.
+ * @av: argument var.
+ * @env: array of string.
  * Return: Always 0.
  */
-int main(void)
+int main(int ac, __attribute__((unused))char **av, char **env)
 {
-	char *l, **args;
-	int checker;
+char *buff = NULL, *path;
+char **tokenize;
+int status = 0, number = 0;
+pid_t pid;
+(void)ac;
 
-	signal(SIGINT, sig_handler);
-
-	if (isatty(STDIN_FILENO) != 0)
-	{
-		do {
-
-		/** Prints Prompt To User */
-		_puts("$ ");
-		/** reads the line */
-		l = readline();
-		/** Separates the line to take and delims commands */
-		args = separate(l);
-		/** Execute the commands given by the user */
-		checker = execute(args);
-
-		free(args);
-		free(l);
-
-	} while (checker);
-	}
-	else
-	{
-		main2();
-	}
-	return (0);
+while (1)
+{
+buff = readline();
+tokenize = NULL;
+tokenize = handle(buff);
+if (!tokenize)
+continue;
+built_in(tokenize, env, &buff, number);
+pid = fork();
+if (pid == -1)
+{
+perror("Error:");
+__free(tokenize, buff);
+return (1);
+}
+if (pid == 0)
+{
+path = pathch(tokenize[0], env);
+if (execve(path, tokenize, NULL) == -1)
+{
+perror(tokenize[0]);
+_free(tokenize, buff);
+exit(127);
+}
+}
+else
+{
+_free(tokenize, buff);
+wait(&status);
+number = __exit(status);
+}
+}
+__free(tokenize, buff);
+return (0);
 }
 /**
- * main2 - Function to read and separate
- * Return: Always 0.
+ * _free - free variable for main.
+ * @tokenize: the array of strings from main.
+ * @buff: buffer input from main function.
  */
-int main2(void)
+void _free(char **tokenize, char *buff)
 {
-	char *l, **args;
+int i;
 
-	do {
-		signal(SIGINT, sig_handler);
-		/** reads the line */
-		l = readline();
-		if (l == NULL)
-		{
-			free(args);
-			free(l);
-			break;
-		}
-    /** Separates the line to take and delims commands */
-		args = separate(l);
-    /** Execute the commands given by the user */
-		execute(args);
-	} while (1);
-	return (0);
+for (i = 0; tokenize[i]; i++)
+free(tokenize[i]);
+nfree(tokenize);
+sfree(buff);
+}
+/**
+ * __free - free variable for main.
+ * @tokenize: the array of strings from main.
+ * @buff: buffer input from main function.
+ */
+void __free(char **tokenize, char *buff)
+{
+nfree(tokenize);
+sfree(buff);
+}
+/**
+ * __exit - return exit frommm child process
+ * @status: exit value.
+ * Return: exit value.
+ */
+int __exit(int status)
+{
+int number;
+
+if (WIFEXITED(status))
+number = WEXITSTATUS(status);
+return (number);
 }
