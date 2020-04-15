@@ -18,7 +18,7 @@ char *readline(void)
 	}
 	while (1) /** read line loop to get the chars. Returns the line n counts chs*/
 	{
-		gc = getchar();
+		gc = _getchar();
 		if (gc == '\n')
 		{
 			buffer[count] = '\0';
