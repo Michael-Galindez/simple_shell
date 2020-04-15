@@ -31,4 +31,5 @@ int cd(char **args);
 int main2(void);
 int _putchar(char c);
 void _puts(char *str);
+int _getchar(void);
 #endif
