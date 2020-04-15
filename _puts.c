@@ -11,18 +11,15 @@ int _putchar(char c)
 {
 return (write(1, &c, 1));
 }
+
 /**
- * _puts - prints a string.
- * @str: pointer to char.
- *
+ * _puts - puts function strings
+ * @str: character value.
  */
 void _puts(char *str)
 {
-int a = 0;
+int i;
 
-while (*(str + a))
-{
-_putchar(*(str + a));
-a++;
-}
+for (i = 0; str[i] != 0; i++)
+_putchar(str[i]);
 }
