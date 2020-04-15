@@ -20,7 +20,7 @@ int execute(char **args)
 	n = N_COMMANDS(commands, commands[0]);
 	for (count = 0; count < n; count++)
 	{
-		if (strcmp(args[0], commands[count].name) == 0)
+		if (_strcmp(args[0], commands[count].name) == 0)
 			return (commands[count].s(args));
 	}
 	return (run(args));
