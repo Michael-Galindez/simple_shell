@@ -5,16 +5,16 @@
  */
 void env_builtin(char **env)
 {
-int i;
+	int i;
 
-if (env)
-{
-for (i = 0; env[i]; i++)
-{
-_puts(env[i]);
-_putchar('\n');
-}
-}
+	if (env)
+	{
+		for (i = 0; env[i]; i++)
+		{
+			_puts(env[i]);
+			_putchar('\n');
+		}
+	}
 }
 /**
  * main - run simple shelll finally.
@@ -25,46 +25,45 @@ _putchar('\n');
  */
 int main(int ac, __attribute__((unused))char **av, char **env)
 {
-char *buff = NULL, *path;
-char **tokenize;
-int status = 0, number = 0;
-pid_t pid;
-(void)ac;
+	char *buff = NULL, *path, **tokenize;
+	int status = 0, number = 0;
+	pid_t pid;
+	(void)ac;
 
-while (1)
-{
-buff = readline();
-tokenize = NULL;
-tokenize = handletok(buff);
-if (!tokenize)
-continue;
-builtin(tokenize, env, &buff, number);
-pid = fork();
-if (pid == -1)
-{
-perror("Error:");
-__free(tokenize, buff);
-return (1);
-}
-if (pid == 0)
-{
-path = pathch(tokenize[0], env);
-if (execve(path, tokenize, NULL) == -1)
-{
-perror(tokenize[0]);
-_free(tokenize, buff);
-exit(127);
-}
-}
-else
-{
-_free(tokenize, buff);
-wait(&status);
-number = __exit(status);
-}
-}
-__free(tokenize, buff);
-return (0);
+	while (1)
+	{
+		buff = readline();
+		tokenize = NULL;
+		tokenize = handletok(buff);
+		if (!tokenize)
+			continue;
+		builtin(tokenize, env, &buff, number);
+		pid = fork();
+		if (pid == -1)
+		{
+			perror("Error:");
+			__free(tokenize, buff);
+			return (1);
+		}
+		if (pid == 0)
+		{
+			path = pathch(tokenize[0], env);
+			if (execve(path, tokenize, NULL) == -1)
+			{
+				perror(tokenize[0]);
+				_free(tokenize, buff);
+				exit(127);
+			}
+		}
+		else
+		{
+			_free(tokenize, buff);
+			wait(&status);
+			number = __exit(status);
+		}
+	}
+	__free(tokenize, buff);
+	return (0);
 }
 /**
  * _free - free variable for main.
@@ -73,12 +72,12 @@ return (0);
  */
 void _free(char **tokenize, char *buff)
 {
-int i;
+	int i;
 
-for (i = 0; tokenize[i]; i++)
-free(tokenize[i]);
-nfree(tokenize);
-sfree(buff);
+	for (i = 0; tokenize[i]; i++)
+		free(tokenize[i]);
+	nfree(tokenize);
+	sfree(buff);
 }
 /**
  * __free - free variable for main.
@@ -87,8 +86,8 @@ sfree(buff);
  */
 void __free(char **tokenize, char *buff)
 {
-nfree(tokenize);
-sfree(buff);
+	nfree(tokenize);
+	sfree(buff);
 }
 /**
  * __exit - return exit frommm child process
@@ -97,9 +96,9 @@ sfree(buff);
  */
 int __exit(int status)
 {
-int number;
+	int number;
 
-if (WIFEXITED(status))
-number = WEXITSTATUS(status);
-return (number);
+	if (WIFEXITED(status))
+		number = WEXITSTATUS(status);
+	return (number);
 }
