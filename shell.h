@@ -32,4 +32,5 @@ int main2(void);
 int _putchar(char c);
 void _puts(char *str);
 int _getchar(void);
+int _strcmp(char *s1, char *s2);
 #endif
