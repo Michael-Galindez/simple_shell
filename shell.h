@@ -1,36 +1,32 @@
 #ifndef SHELL_H
 #define SHELL_H
-#define N_COMMANDS(x, y) (sizeof(x) / sizeof(y))
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
+#include <sys/types.h>
 #include <sys/wait.h>
-#include <signal.h>
 #include <sys/stat.h>
-/**
- * struct command_t - pointers to builtins.
- * @name: name of the command.
- * @s: pointer to command.
- */
-typedef struct command_t
-{
-char *name;
-int (*s)();
+#include <string.h>
 
-} command_t;
-
-char *readline(void);
-char **separate(char *l);
-int execute(char **args);
-int run(char **args);
-int __exit(void);
-int help(void);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-int cd(char **args);
-int main2(void);
-int _putchar(char c);
+extern char **environ;
 void _puts(char *str);
-int _getchar(void);
+int _putchar(char c);
+char *_strdup(char *str);
+char **handletok(char *buffer);
+char *pathvalue(char **env);
+char *pathch(char *token, char **env);
+char *_strstr(char *haystack, char *needle);
 int _strcmp(char *s1, char *s2);
+int _strncmp(const char *s1, const char *s2, size_t n);
+char *_strcat(char *dest, char *src);
+int _strlen(char *str);
+char *_memset(char *s, char b, unsigned int n);
+void builtin(char **tokenize, char **env, char **buff, int status);
+char *readline(void);
+void sfree(char *str);
+void nfree(char **str);
+void env_builtin(char **env);
+void _free(char **tokenize, char *buff);
+void __free(char **tokenize, char *buff);
+int __exit(int status);
 #endif

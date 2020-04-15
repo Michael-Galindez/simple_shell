@@ -27,7 +27,8 @@ int main(int ac, __attribute__((unused))char **av, char **env)
 {
 char *buff = NULL, *path;
 char **tokenize;
-int status = 0, number = 0;
+int status = 0;
+int number = 0;
 pid_t pid;
 (void)ac;
 
@@ -35,10 +36,10 @@ while (1)
 {
 buff = readline();
 tokenize = NULL;
-tokenize = handle(buff);
+tokenize = handletok(buff);
 if (!tokenize)
 continue;
-built_in(tokenize, env, &buff, number);
+builtin(tokenize, env, &buff, number);
 pid = fork();
 if (pid == -1)
 {
