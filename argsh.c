@@ -29,7 +29,7 @@ return (s);
 }
 
 /**
- * handle - takes buffer input and tokenizes it
+ * handletok - takes buffer input and tokenizes it
  * @buffer: buffer input from main function.
  * Return: array of string after tokenize.
  */

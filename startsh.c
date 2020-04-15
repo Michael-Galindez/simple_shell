@@ -27,8 +27,7 @@ int main(int ac, __attribute__((unused))char **av, char **env)
 {
 char *buff = NULL, *path;
 char **tokenize;
-int status = 0;
-int number = 0;
+int status = 0, number = 0;
 pid_t pid;
 (void)ac;
 

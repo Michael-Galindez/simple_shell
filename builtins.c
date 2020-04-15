@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- *built_in - built-in command for shell.
+ *builtin - built-in command for shell.
  *@tokenize: value tokenized the buffer in startsh file.
  *@env: array of string to environ values.
  *@buff: buffer input from main.
