@@ -52,7 +52,7 @@ int main(int ac, __attribute__((unused))char **av, char **env)
 			{
 				perror(tokenize[0]);
 				_free(tokenize, buff);
-				exit(127);
+				exit(0);
 			}
 		}
 		else
