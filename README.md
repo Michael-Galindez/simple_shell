@@ -6,6 +6,8 @@ Simple Shell project repository for Holberton School
 ___
 ![loop](https://user-images.githubusercontent.com/60362631/78463494-f37c2380-76a2-11ea-8a9c-2faa25a5b0b6.gif)
 ___
+![Flowchart_Shell](https://user-images.githubusercontent.com/34816614/79493368-ffdb7700-7fe6-11ea-8a64-cbf8883c2193.jpg)
+___
  **General**
 
 Who designed and implemented the original Unix operating system
