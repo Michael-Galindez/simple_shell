@@ -35,7 +35,7 @@ char *readline(void)
 		free(buff);
 		if (isatty(0))
 			_puts("\n");
-		exit(0);
+		exit(127);
 	}
 	if (buff[lineptr - 1] == '\n')
 		buff[lineptr - 1] = '\0';
