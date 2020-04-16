@@ -23,7 +23,7 @@ Compile simple_shell with the GNU Compiler Collection, preferably using gcc plus
 .B $ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 .P
 .RE
-simple_shell can be run by entering the below command on the command line. Note that the prompt ('SH>$') will appear and you will then be able to enter commands.
+simple_shell can be run by entering the below command on the command line. Note that the prompt ('$') will appear and you will then be able to enter commands.
 .P
 .RS
 .B $ ./hsh
@@ -33,13 +33,10 @@ simple_shell can be run by entering the below command on the command line. Note 
 The following builtin commands are supported:
 
 .B exit
-- exits the shell
+- Exits the shell
 
-.B cd
-- Move to another directory
-
-.B help
-- Shows available commands
+.B env
+- List the current environment variables
 
 .SH SEE ALSO
 .B Bash(1)
